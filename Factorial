@@ -1,0 +1,56 @@
+package com.gmail.nikolajievich;
+
+import java.math.BigInteger;
+
+public class Factorial implements Runnable {
+
+	private int number;
+
+	public Factorial() {
+		super();
+
+	}
+
+	public Factorial(int number) {
+		super();
+		this.number = number;
+	}
+
+	/**
+	 * @return the number
+	 */
+	public int getNumber() {
+		return number;
+	}
+
+	/**
+	 * @param number the number to set
+	 */
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	private BigInteger calculate(int number) {
+		BigInteger fact = new BigInteger("1");
+		for (int i = 2; i <= number; i += 1) {
+			fact = fact.multiply(new BigInteger("" + i));
+		}
+
+		return fact;
+
+	}
+
+	@Override
+	public void run() {
+		Thread th = Thread.currentThread();
+		for (int i = 1; i <= this.number; i++) {
+			System.out.println(th.getName()+" "+i+"!="+calculate(i));
+			
+		}
+		
+		
+	}
+	
+	
+
+}
