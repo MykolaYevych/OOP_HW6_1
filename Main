@@ -1,0 +1,23 @@
+package com.gmail.nikolajievich;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Thread[] array = new Thread[100];
+
+		for (int i = 0; i < array.length; i++) {
+			array[i] = new Thread(new Factorial(i));
+
+		}
+		for (int i = 0; i < array.length; i++) {
+
+			array[i].start();
+
+		}
+
+		System.out.println(Thread.currentThread().getName());
+
+	}
+
+}
